@@ -8,7 +8,7 @@ This repository contains the implementation and ongoing work for a seminar proje
 The project focuses on reproducing and extending the results of the paper:
 
 > Strehl, A. L., & Littman, M. L. (2008).  
-> [An Analysis of Model-Based Interval Estimation for Markov Decision Processes]([https://arxiv.org/abs/1906.05363](https://www.sciencedirect.com/science/article/pii/S0022000008000767?ref=pdf_download&fr=RR-2&rr=9dfde5654e296aa0)).
+> [An Analysis of Model-Based Interval Estimation for Markov Decision Processes](https://www.sciencedirect.com/science/article/pii/S0022000008000767?ref=pdf_download&fr=RR-2&rr=9dfde5654e296aa0).
 
 ---
 
