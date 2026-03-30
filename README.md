@@ -1,5 +1,6 @@
-# Model-Based Interval Estimation for MDPs — Reproduction and Extensions
+# Model-Based Interval Estimation for MDPs
 
+### Reproduction & Extension Study
 ### Seminar — Advanced Topics in Reinforcement Learning and Decision Making
 
 This repository contains the implementation and ongoing work for a seminar project conducted in **Advanced Topics in Reinforcement Learning and Decision Making**, within the [Swiss Joint Master in Computer Science](https://mcs.unibnf.ch/).
