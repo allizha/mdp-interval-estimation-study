@@ -22,11 +22,6 @@ We aim to reproduce key theoretical and experimental results from the original p
 
 ## Project Roadmap
 
-<details>
-<summary><strong>Click to expand project roadmap</strong></summary>
-
-<br>
-
 ### Current Status
 
 - [x] Theoretical foundations of reinforcement learning and MDPs  
@@ -34,7 +29,10 @@ We aim to reproduce key theoretical and experimental results from the original p
 - [x] PAC-MDP framework and performance metrics  
 - [x] Detailed presentation of MBIE and MBIE-EB  
 
----
+<details>
+<summary><strong>Click to expand project roadmap</strong></summary>
+
+<br>
 
 ### Part 1 — Final Improvements (Theory)
 
