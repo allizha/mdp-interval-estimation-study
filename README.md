@@ -1,17 +1,13 @@
 # Model-Based Interval Estimation for MDPs — Reproduction and Extensions
 
-![Python](https://img.shields.io/badge/Python-3.x-blue)
-![Jupyter](https://img.shields.io/badge/Notebook-Jupyter-orange)
-![Status](https://img.shields.io/badge/Status-In%20Progress-yellow)
-
 ### Seminar — Advanced Topics in Reinforcement Learning and Decision Making
 
-This repository contains the implementation and ongoing work for a seminar project conducted in **Advanced Topics in Reinforcement Learning and Decision Making**.
+This repository contains the implementation and ongoing work for a seminar project conducted in **Advanced Topics in Reinforcement Learning and Decision Making**, within the [Swiss Joint Master in Computer Science](https://mcs.unibnf.ch/).
 
 The project focuses on reproducing and extending the results of the paper:
 
 > Strehl, A. L., & Littman, M. L. (2008).  
-> *An Analysis of Model-Based Interval Estimation for Markov Decision Processes*.
+> [An Analysis of Model-Based Interval Estimation for Markov Decision Processes]([https://arxiv.org/abs/1906.05363](https://www.sciencedirect.com/science/article/pii/S0022000008000767?ref=pdf_download&fr=RR-2&rr=9dfde5654e296aa0)).
 
 ---
 
@@ -28,8 +24,7 @@ We aim to reproduce key theoretical and experimental results from the original p
 This project is currently under development.
 
 At this stage, the repository includes:
-- initial implementation of core algorithms  
-- preliminary experiments and analysis  
+- Theoretical foundations  
 
 The report and presentation will be added once the project is finalized.
 
