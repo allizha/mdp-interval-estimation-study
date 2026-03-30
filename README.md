@@ -20,14 +20,121 @@ We aim to reproduce key theoretical and experimental results from the original p
 
 ---
 
+# Project Roadmap
+
+---
+
 ## Current Status
 
-This project is currently under development.
+- [x] Theoretical foundations of reinforcement learning and MDPs  
+- [x] Interval Estimation and optimism principle  
+- [x] PAC-MDP framework and performance metrics  
+- [x] Detailed presentation of MBIE and MBIE-EB  
 
-At this stage, the repository includes:
-- Theoretical foundations  
+---
 
-The report and presentation will be added once the project is finalized.
+## Part 1 — Final Improvements (Theory)
+
+- [ ] Add MBIE pseudocode for clarity and completeness  
+- [ ] Add a small numerical example for average loss  
+- [ ] Add comparison with other PAC-MDP algorithms (R-max, E3)  
+
+---
+
+## Part 2 — Implementation
+
+### 2.1 Environment Setup
+- [ ] Implement benchmark environments:
+  - [ ] RiverSwim  
+  - [ ] SixArms  
+- [ ] Define MDP structure (states, actions, rewards, transitions)
+
+---
+
+### 2.2 Algorithms
+
+- [ ] Implement MBIE
+  - [ ] Empirical model ($\hat{R}$, $\hat{T}$)
+  - [ ] Confidence intervals
+  - [ ] Optimistic planning
+
+- [ ] Implement MBIE-EB
+  - [ ] Exploration bonus term
+  - [ ] Value iteration / planning
+
+- [ ] Implement baselines:
+  - [ ] R-max  
+  - [ ] (Optional) E3  
+
+---
+
+### 2.3 Verification
+
+- [ ] Unit tests for:
+  - [ ] Transition updates  
+  - [ ] Reward estimation  
+  - [ ] Value iteration  
+
+- [ ] Debug on small toy MDPs  
+
+---
+
+## Part 3 — Experiments
+
+### 3.1 Experimental Setup
+- [ ] Define evaluation metrics:
+  - [ ] Cumulative reward  
+  - [ ] Regret / loss  
+  - [ ] Convergence speed  
+
+- [ ] Set hyperparameters:
+  - [ ] $\gamma$, $\varepsilon$, $\delta$  
+  - [ ] Exploration constants  
+
+---
+
+### 3.2 Benchmark Experiments
+- [ ] Run experiments on:
+  - [ ] RiverSwim  
+  - [ ] SixArms  
+
+- [ ] Compare:
+  - [ ] MBIE vs MBIE-EB  
+  - [ ] vs R-max  
+
+---
+
+### 3.3 Results Analysis
+- [ ] Plot learning curves  
+- [ ] Analyze exploration efficiency  
+- [ ] Compare sample efficiency  
+- [ ] Interpret differences between algorithms  
+
+---
+
+## Part 4 — Extensions
+
+- [ ] Test alternative exploration bonuses  
+- [ ] Study sensitivity to parameters  
+- [ ] Try larger or stochastic environments  
+- [ ] (Optional) Compare with modern RL methods  
+
+---
+
+## Part 5 — Final Report
+
+- [ ] Summarize theoretical insights  
+- [ ] Present experimental findings  
+- [ ] Discuss limitations of MBIE  
+- [ ] Provide conclusions and future work  
+
+---
+
+## Deliverables
+
+- [ ] Clean and reproducible code  
+- [ ] Well-documented notebook  
+- [ ] Final report with figures and analysis  
 
 ---
 
