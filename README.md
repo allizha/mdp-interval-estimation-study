@@ -20,11 +20,14 @@ We aim to reproduce key theoretical and experimental results from the original p
 
 ---
 
-# Project Roadmap
+## Project Roadmap
 
----
+<details>
+<summary><strong>Click to expand project roadmap</strong></summary>
 
-## Current Status
+<br>
+
+### Current Status
 
 - [x] Theoretical foundations of reinforcement learning and MDPs  
 - [x] Interval Estimation and optimism principle  
@@ -33,7 +36,7 @@ We aim to reproduce key theoretical and experimental results from the original p
 
 ---
 
-## Part 1 — Final Improvements (Theory)
+### Part 1 — Final Improvements (Theory)
 
 - [ ] Add MBIE pseudocode for clarity and completeness  
 - [ ] Add a small numerical example for average loss  
@@ -41,9 +44,9 @@ We aim to reproduce key theoretical and experimental results from the original p
 
 ---
 
-## Part 2 — Implementation
+### Part 2 — Implementation
 
-### 2.1 Environment Setup
+#### 2.1 Environment Setup
 - [ ] Implement benchmark environments:
   - [ ] RiverSwim  
   - [ ] SixArms  
@@ -51,7 +54,7 @@ We aim to reproduce key theoretical and experimental results from the original p
 
 ---
 
-### 2.2 Algorithms
+#### 2.2 Algorithms
 
 - [ ] Implement MBIE
   - [ ] Empirical model ($\hat{R}$, $\hat{T}$)
@@ -68,7 +71,7 @@ We aim to reproduce key theoretical and experimental results from the original p
 
 ---
 
-### 2.3 Verification
+#### 2.3 Verification
 
 - [ ] Unit tests for:
   - [ ] Transition updates  
@@ -79,9 +82,9 @@ We aim to reproduce key theoretical and experimental results from the original p
 
 ---
 
-## Part 3 — Experiments
+### Part 3 — Experiments
 
-### 3.1 Experimental Setup
+#### 3.1 Experimental Setup
 - [ ] Define evaluation metrics:
   - [ ] Cumulative reward  
   - [ ] Regret / loss  
@@ -93,7 +96,7 @@ We aim to reproduce key theoretical and experimental results from the original p
 
 ---
 
-### 3.2 Benchmark Experiments
+#### 3.2 Benchmark Experiments
 - [ ] Run experiments on:
   - [ ] RiverSwim  
   - [ ] SixArms  
@@ -104,7 +107,7 @@ We aim to reproduce key theoretical and experimental results from the original p
 
 ---
 
-### 3.3 Results Analysis
+#### 3.3 Results Analysis
 - [ ] Plot learning curves  
 - [ ] Analyze exploration efficiency  
 - [ ] Compare sample efficiency  
@@ -112,7 +115,7 @@ We aim to reproduce key theoretical and experimental results from the original p
 
 ---
 
-## Part 4 — Extensions
+### Part 4 — Extensions
 
 - [ ] Test alternative exploration bonuses  
 - [ ] Study sensitivity to parameters  
@@ -121,7 +124,7 @@ We aim to reproduce key theoretical and experimental results from the original p
 
 ---
 
-## Part 5 — Final Report
+### Part 5 — Final Report
 
 - [ ] Summarize theoretical insights  
 - [ ] Present experimental findings  
@@ -130,11 +133,13 @@ We aim to reproduce key theoretical and experimental results from the original p
 
 ---
 
-## Deliverables
+### Deliverables
 
 - [ ] Clean and reproducible code  
 - [ ] Well-documented notebook  
 - [ ] Final report with figures and analysis  
+
+</details>
 
 ---
 
