@@ -2,6 +2,7 @@
 
 ### Reproduction & Extension Study
 ### Seminar — Advanced Topics in Reinforcement Learning and Decision Making
+### Prof. Christos Dimitrakakis — University of Neuchâtel
 
 This repository contains the implementation and results of a seminar project conducted in **Advanced Topics in Reinforcement Learning and Decision Making**, within the [Swiss Joint Master in Computer Science](https://mcs.unibnf.ch/).
 
