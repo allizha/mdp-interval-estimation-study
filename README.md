@@ -7,7 +7,8 @@
 
 ---
 
-| | |
+## Authors
+
 |---|---|
 | **Allizha Theiventhiram** | University of Neuchâtel · allizha.theiventhiram@unine.ch |
 | **Boris Verdecia Echarte** | University of Neuchâtel · boris.verdecia@unine.ch |
