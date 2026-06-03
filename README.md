@@ -3,7 +3,12 @@
 ### Reproduction & Extension Study
 ### Seminar — Advanced Topics in Reinforcement Learning and Decision Making
 
-> **Authors:** Allizha Theiventhiram, Aurélie Wasem, Boris Verdecia Echarte, Rithika Shyam Kumar
+**Authors:** 
+**Allizha Theiventhiram** — University of Neuchâtel — allizha.theiventhiram@unine.ch  
+**Boris Verdecia Echarte** — University of Neuchâtel — boris.verdecia@unine.ch
+**Aurélie Wasem** — University of Neuchâtel — aurelie.wasem@unine.ch
+**Rithika Shyam Kumar** — University of Bern — rithika.shyamkumar@students.unibe.ch
+
 
 This repository contains the implementation and results of a seminar project conducted in **Advanced Topics in Reinforcement Learning and Decision Making** by Prof. Christos Dimitrakakis, within the [Swiss Joint Master in Computer Science](https://mcs.unibnf.ch/).
 
