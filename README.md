@@ -21,7 +21,7 @@ The paper introduces **MBIE** (Model-Based Interval Estimation) and proves the f
 
 ## The MBIE Algorithm
 
-![MBIE Loop](mbie_diagram.png)
+![MBIE Loop](figures/figure1.png)
 
 > *Diagram created with the assistance of ChatGPT (OpenAI, 2025).*
 
@@ -54,16 +54,18 @@ MBIE operates in a 5-step loop: interact with the environment, update empirical 
 
 ```
 ├── Seminar_RL.ipynb          # Main notebook — all experiments
-├── mbie_diagram.png          # MBIE algorithm diagram
 ├── figures/                  # All generated plots
-│   ├── figure1.png           # RiverSwim reproduction (Fig. 2)
-│   ├── figure2.png           # SixArms reproduction (Fig. 3)
-│   ├── figure3.png           # SixArms learning curves
+│   ├── figure1.png           # MBIE algorithm diagram
+│   ├── figure2.png           # RiverSwim reproduction
+│   ├── figure3.png           # SixArms reproduction
 │   ├── figure4.png           # RiverSwim learning curves
-│   ├── figure5.png           # m sensitivity
-│   ├── figure6_a.png         # A/B heatmap RiverSwim
-│   ├── figure6_b.png         # A/B heatmap SixArms
-│   ├── figure7.png           # γ sensitivity
+│   ├── figure5.png           # SixArms learning curves
+│   ├── figure6.png           # m sensitivity on RiverSwim
+│   ├── figure7.png           # m sensitivity on SixArms
+│   ├── figure8_a.png         # A/B heatmap RiverSwim
+│   ├── figure8_b.png         # A/B heatmap SixArms
+│   ├── figure9.png           # γ sensitivity on RiverSwim
+│   ├── figure10.png          # γ sensitivity on SixArms
 │   ├── figure11.png          # FrozenLake bar chart
 │   └── figure12.png          # FrozenLake learning curves
 ├── RL_paper.pdf              # Report (ICML 2025 format)
@@ -99,21 +101,17 @@ CI-based methods (MBIE, MBIE-EB) collect **3× more reward** than threshold-base
 
 ---
 
-## Bug Fixes
+## Bug Fix
 
-Three reproducibility issues were identified and fixed:
+One reproducibility issue was identified and fixed:
 
-1. **E³ escape probability** — the rollout must follow $Q_{\text{explore}}$, not $Q_{\text{exploit}}$. The exploit policy assigns Q=0 to unknown pairs, causing $p_{\text{escape}}=0$ and the agent never exploring.
-
-2. **Value iteration convergence** — a `while theta < delta or i < 10000` condition forced exactly 10,000 iterations regardless of convergence. Fixed to `while i < 10000: ... if delta < theta: break`, reducing computation by ~100×.
-
-3. **Numerical stability** — for small m, optimistic value iteration produces values exceeding $v_{\max}$. Fixed by clipping $\tilde{Q}(s,a)$ to $[0, v_{\max}]$, justified by Lemma 6 of the paper.
+**E³ escape probability** — the rollout must follow $Q_{\text{explore}}$, not $Q_{\text{exploit}}$. The exploit policy assigns Q=0 to unknown pairs, causing $p_{\text{escape}}=0$ and the agent never exploring.
 
 ---
 
 ## Reproducibility Note
 
-Strehl & Littman (2008) provide neither source code nor a detailed experimental setup. Parameter values are reported only as the result of "a broad search" without specifying the grid, number of trials, or random seeds. All implementation details were re-derived independently. Parameters used:
+Strehl & Littman (2008) provide neither source code nor a complete experimental setup. Parameter values are reported only as the result of *"a broad search,"* without specifying details such as the search grid, number of trials, or random seed. All implementation details except for input parameters of the different algorithms were reconstructed independently. Parameters used:
 
 | | RiverSwim | SixArms |
 |--|-----------|---------|
