@@ -5,113 +5,150 @@
 
 This repository contains the implementation and results of a seminar project conducted in **Advanced Topics in Reinforcement Learning and Decision Making** by Prof. Christos Dimitrakakis, within the [Swiss Joint Master in Computer Science](https://mcs.unibnf.ch/).
 
-The project reproduces and extends the results of:
+---
+
+## Project Overview
+
+This repository contains our reproduction and extension of the experiments from:
 
 > Strehl, A. L., & Littman, M. L. (2008).  
 > [An Analysis of Model-Based Interval Estimation for Markov Decision Processes](https://www.sciencedirect.com/science/article/pii/S0022000008000767?ref=pdf_download&fr=RR-2&rr=9dfde5654e296aa0).  
 > Journal of Computer and System Sciences, 74(8), pages 1309–1331.
 
----
-
-## Project Overview
-
-This project investigates model-based reinforcement learning methods for Markov Decision Processes (MDPs), with a focus on interval estimation techniques for efficient exploration. We reproduce the key theoretical and experimental results from Strehl & Littman (2008) and extend them through six additional experiments that probe the algorithms' behaviour across different parameter regimes and environments.
+The paper introduces **MBIE** (Model-Based Interval Estimation) and proves the first fully explicit PAC-MDP sample-complexity bound for a confidence-interval-based reinforcement learning algorithm. We reproduce the main benchmark results and run five extensions probing parameter sensitivity, learning dynamics, and generalisation to new environments.
 
 ---
 
-## What We Did
+## The MBIE Algorithm
 
-### Reproduction
-We reproduced Figures 2 and 3 of the paper — cumulative reward after 5000 steps on RiverSwim and SixArms — using the paper's exact parameter settings. All four algorithms were implemented from scratch:
+![MBIE Loop](mbie_diagram.png)
 
-- **MBIE** — Model-Based Interval Estimation (Strehl & Littman, 2008)
-- **MBIE-EB** — MBIE with Exploration Bonus (Strehl & Littman, 2008)
-- **R-Max** — Brafman & Tennenholtz (2002)
-- **E3** — Explicit Explore or Exploit (Kearns & Singh, 2002)
-
-### Extensions
-Six extensions were implemented beyond the paper:
-
-| # | Extension | Description |
-|---|-----------|-------------|
-| 1 | Learning curves | Full cumulative reward trajectory over time, revealing when each algorithm transitions from exploration to exploitation |
-| 2 | Sensitivity to m | How the visit threshold affects all four algorithms across m ∈ {1, 2, 4, 8, 16, 32, 64, 128} |
-| 3 | Sensitivity to A and B | Heatmap of MBIE's confidence interval width parameters on both environments |
-| 4 | Sensitivity to γ | Discount factor sweep γ ∈ {0.5, 0.7, 0.8, 0.9, 0.95, 0.99} |
-| 5 | Epsilon-greedy baseline | Quantifying the value of principled exploration over naive random perturbation |
-| 6 | FrozenLake 8×8 | Benchmarking all four algorithms on a new stochastic environment from OpenAI Gymnasium |
+MBIE operates in a 5-step loop: interact with the environment, update empirical estimates, build confidence intervals on rewards and transitions, select the most optimistic model within those intervals, and plan via value iteration. The key idea is **optimism in the face of uncertainty** — unknown state-action pairs are initialised to the maximum possible return $v_{\max} = R_{\max}/(1-\gamma)$.
 
 ---
 
-## Key Findings
+## Algorithms Implemented
 
-- **Reproduction confirmed**: MBIE ≈ MBIE-EB > R-Max > E3 on RiverSwim; MBIE-EB ≈ MBIE >> R-Max > E3 on SixArms — matching the paper's ordering.
-- **CI-based methods are robust**: MBIE and MBIE-EB are nearly insensitive to the visit threshold m, whereas R-Max and E3 show a clear U-shaped sensitivity.
-- **B=0 works well**: Transition CI width has minimal effect on RiverSwim — this explains why MBIE-EB (which ignores transition uncertainty entirely) matches MBIE's performance.
-- **γ=0.95 is well-chosen**: All algorithms peak near the paper's value; very low γ causes myopic behaviour on RiverSwim, very high γ causes numerical instability.
-- **ε-greedy fails on RiverSwim**: Random exploration cannot generate the sustained rightward sequences needed to find the large reward at state 5.
-- **FrozenLake generalises**: All PAC-MDP algorithms find the goal on the slippery 8×8 grid, confirming the optimism principle generalises beyond the paper's environments.
-
----
-
-## Repository Contents
-
-- `mdp-interval-estimation.ipynb` — full implementation, experiments and analysis
-- `README.md`
-
----
-
-## How to Run
-
-1. Clone the repository:
-
-        git clone https://github.com/allizha/mdp-interval-estimation-study.git
-
-2. Install dependencies:
-
-        pip install numpy matplotlib gymnasium tqdm
-
-3. Open and run the notebook:
-
-        jupyter notebook mdp-interval-estimation.ipynb
-
-Or open directly in Google Colab:
-[Open in Colab](https://colab.research.google.com/drive/176gtQHemaMMu74CpQFYok-z5dZPgixPE?usp=sharing)
+| Algorithm | Type | Reference |
+|-----------|------|-----------|
+| **MBIE** | CI-based, model-based | Strehl & Littman (2008) |
+| **MBIE-EB** | CI-based with exploration bonus | Strehl & Littman (2008) |
+| **R-Max** | Threshold-based, model-based | Brafman & Tennenholtz (2002) |
+| **E³** | Explicit explore/exploit | Kearns & Singh (2002) |
 
 ---
 
 ## Environments
 
-### RiverSwim
-6 states in a chain. The agent swims left (easy, small reward) or right (hard, stochastic, large reward). Tests whether algorithms can commit to long exploratory sequences against resistance.
+**RiverSwim** — 6 states in a chain. The agent must swim upstream against a stochastic current to reach a large reward. Requires long sequences of exploration before any reward signal.
 
-### SixArms
-7 states: one hub connected to 6 rooms. Higher-probability arms give lower rewards. Tests whether algorithms can efficiently rule out clearly inferior actions.
+**SixArms** — 7 states: a hub connected to 6 rooms. Higher-probability arms yield lower rewards, so the agent must learn to commit to low-probability but high-reward arms.
 
-### FrozenLake 8×8 (slippery)
-64-state grid from OpenAI Gymnasium. Stochastic transitions — each intended action succeeds with prob 1/3 and slips sideways with prob 2/3. Tests generalisation to larger, standard benchmark environments.
+**FrozenLake 8×8** (Extension 5) — 64 states, sparse reward, stochastic transitions. Standard OpenAI Gymnasium benchmark used to test generalisation.
 
 ---
 
-## Authors
+## Repository Structure
 
-- **Allizha Theiventhiram** — University of Neuchâtel
-- **Rithika Shyam Kumar** — University of Bern
-- **Aurélie Wasem** — University of Neuchâtel
-- **Boris Verdecia Echarte** — University of Neuchâtel
-
-Seminar supervised by **Prof. Christos Dimitrakakis**, with assistance from **Victor Villin**.
+```
+├── Seminar_RL.ipynb          # Main notebook — all experiments
+├── mbie_diagram.png          # MBIE algorithm diagram
+├── figures/                  # All generated plots
+│   ├── figure1.png           # RiverSwim reproduction (Fig. 2)
+│   ├── figure2.png           # SixArms reproduction (Fig. 3)
+│   ├── figure3.png           # SixArms learning curves
+│   ├── figure4.png           # RiverSwim learning curves
+│   ├── figure5.png           # m sensitivity
+│   ├── figure6_a.png         # A/B heatmap RiverSwim
+│   ├── figure6_b.png         # A/B heatmap SixArms
+│   ├── figure7.png           # γ sensitivity
+│   ├── figure11.png          # FrozenLake bar chart
+│   └── figure12.png          # FrozenLake learning curves
+├── RL_paper.pdf              # Report (ICML 2025 format)
+└── README.md
+```
 
 ---
 
-## Reference
+## Results Summary
 
-Strehl, A. L., & Littman, M. L. (2008).  
-*An Analysis of Model-Based Interval Estimation for Markov Decision Processes*.  
-Journal of Computer and System Sciences, 74(8), 1309–1331.
+### Reproduction
+
+| Algorithm | RiverSwim | SixArms |
+|-----------|-----------|---------|
+| MBIE | 3.17M ± 0.12M | 6.20M ± 0.86M |
+| MBIE-EB | 3.08M ± 0.14M | 8.29M ± 4.89M |
+| R-Max | 3.01M ± 0.13M | 2.54M ± 2.09M |
+| E³ | 2.45M ± 1.22M | 2.15M ± 2.20M |
+
+*10 trials, 5000 steps, γ=0.95*
+
+CI-based methods (MBIE, MBIE-EB) collect **3× more reward** than threshold-based methods (R-Max, E³) on SixArms. The advantage comes from *partial exploitation* — CI widths shrink continuously with each visit, allowing exploitation to begin before a pair is fully "known".
+
+### Extensions
+
+| Extension | Key finding |
+|-----------|-------------|
+| Learning curves | MBIE/MBIE-EB transition to exploitation ~500 steps earlier than R-Max/E³ |
+| Sensitivity to m | MBIE/MBIE-EB stable for m ≥ 16; R-Max/E³ collapse for m ≥ 32 on SixArms |
+| Sensitivity to A, B | B≈0 optimal on RiverSwim; SixArms sensitive to B |
+| Sensitivity to γ | All algorithms improve with γ on RiverSwim; complex on SixArms |
+| FrozenLake 8×8 | MBIE (3.33) and MBIE-EB (2.87) vs R-Max (0.93) and E³ (0.40) |
 
 ---
 
-## License
+## Bug Fixes
 
-This project is shared for academic and educational purposes.
+Three reproducibility issues were identified and fixed:
+
+1. **E³ escape probability** — the rollout must follow $Q_{\text{explore}}$, not $Q_{\text{exploit}}$. The exploit policy assigns Q=0 to unknown pairs, causing $p_{\text{escape}}=0$ and the agent never exploring.
+
+2. **Value iteration convergence** — a `while theta < delta or i < 10000` condition forced exactly 10,000 iterations regardless of convergence. Fixed to `while i < 10000: ... if delta < theta: break`, reducing computation by ~100×.
+
+3. **Numerical stability** — for small m, optimistic value iteration produces values exceeding $v_{\max}$. Fixed by clipping $\tilde{Q}(s,a)$ to $[0, v_{\max}]$, justified by Lemma 6 of the paper.
+
+---
+
+## Reproducibility Note
+
+Strehl & Littman (2008) provide neither source code nor a detailed experimental setup. Parameter values are reported only as the result of "a broad search" without specifying the grid, number of trials, or random seeds. All implementation details were re-derived independently. Parameters used:
+
+| | RiverSwim | SixArms |
+|--|-----------|---------|
+| MBIE A, B | 0.3, 0.0 | 0.3, 0.08 |
+| MBIE-EB C | 0.4 | 0.8 |
+| R-Max m | 16 | 6 |
+| E³ m, thresh | 16, 0.01 | 4, 0.09 |
+
+---
+
+## Setup
+
+```bash
+pip install numpy matplotlib tqdm gymnasium
+jupyter notebook Seminar_RL.ipynb
+```
+
+Run all cells in order. The notebook is self-contained — environments, algorithms, experiments, and plots are all defined inline.
+
+---
+
+## Citation
+
+```bibtex
+@article{strehl2008mbie,
+  author  = {Strehl, Alexander L. and Littman, Michael L.},
+  title   = {An analysis of model-based interval estimation for {Markov} decision processes},
+  journal = {Journal of Computer and System Sciences},
+  volume  = {74},
+  number  = {8},
+  pages   = {1309--1331},
+  year    = {2008}
+}
+```
+
+---
+
+## LLM Usage
+
+Large language models (ChatGPT, Claude, Gemini) were used to assist with understanding theoretical concepts, debugging code, and writing. All mathematical content, experimental results, and scientific conclusions are our own.
