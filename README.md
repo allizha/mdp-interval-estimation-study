@@ -23,6 +23,8 @@ The paper introduces **MBIE** (Model-Based Interval Estimation) and proves the f
 
 ![MBIE Loop](mbie_diagram.png)
 
+> *Diagram created with the assistance of ChatGPT (OpenAI, 2025).*
+
 MBIE operates in a 5-step loop: interact with the environment, update empirical estimates, build confidence intervals on rewards and transitions, select the most optimistic model within those intervals, and plan via value iteration. The key idea is **optimism in the face of uncertainty** — unknown state-action pairs are initialised to the maximum possible return $v_{\max} = R_{\max}/(1-\gamma)$.
 
 ---
