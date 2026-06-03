@@ -3,7 +3,7 @@
 ### Reproduction & Extension Study
 ### Seminar — Advanced Topics in Reinforcement Learning and Decision Making
 
-**Authors:** 
+**Authors:**   
 **Allizha Theiventhiram** — University of Neuchâtel — allizha.theiventhiram@unine.ch  
 **Boris Verdecia Echarte** — University of Neuchâtel — boris.verdecia@unine.ch  
 **Aurélie Wasem** — University of Neuchâtel — aurelie.wasem@unine.ch  
