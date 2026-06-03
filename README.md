@@ -79,7 +79,7 @@ MBIE operates in a 5-step loop: interact with the environment, update empirical 
 │   ├── figure10.png          # γ sensitivity on SixArms
 │   ├── figure11.png          # FrozenLake bar chart
 │   └── figure12.png          # FrozenLake learning curves
-├── RL_paper.pdf              # Report (ICML 2025 format)
+├── RL_Seminar_FinalReport.pdf              # Report (ICML 2025 format)
 └── README.md
 ```
 
